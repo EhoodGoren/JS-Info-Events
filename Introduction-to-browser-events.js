@@ -11,3 +11,21 @@ hiderButton.addEventListener("click", buttonHide);
 const selfHideButton = document.querySelectorAll("#selfHide")[0];
 selfHideButton.onclick = () => {selfHideButton.hidden = true};
 
+// Move the ball across the field
+
+// Create a sliding menu
+function showList(){
+    const list = document.querySelectorAll("#list")[0];
+    if(list.style.display === "none"){
+        list.style.display = "block";
+        //document.querySelectorAll("#menu").innerText = "▶ Sweeties (click me)!"
+    } else{
+        list.style.display = "none";
+        //document.getElementById("menu").innerText = "▼ Sweeties (click me)!"
+    }
+}
+const slidMenu = document.querySelectorAll("#menu")[0];
+slidMenu.addEventListener("click",showList);
+// Add a closing button
+
+// Carousel
