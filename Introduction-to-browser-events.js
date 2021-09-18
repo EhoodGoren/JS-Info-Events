@@ -18,14 +18,14 @@ function showList(){
     const list = document.querySelectorAll("#list")[0];
     if(list.style.display === "none"){
         list.style.display = "block";
-        //document.querySelectorAll("#menu").innerText = "▶ Sweeties (click me)!"
+        document.querySelectorAll("#menu")[0].innerText = "▼ Sweeties (click me)!"
     } else{
         list.style.display = "none";
-        //document.getElementById("menu").innerText = "▼ Sweeties (click me)!"
+        document.querySelectorAll("#menu")[0].innerText = "▶ Sweeties (click me)!"
     }
 }
-const slidMenu = document.querySelectorAll("#menu")[0];
-slidMenu.addEventListener("click",showList);
+const slideMenu = document.querySelectorAll("#menu")[0];
+slideMenu.addEventListener("click",showList);
 // Add a closing button
 
 // Carousel
