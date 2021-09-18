@@ -12,6 +12,57 @@ const selfHideButton = document.querySelectorAll("#selfHide")[0];
 selfHideButton.onclick = () => {selfHideButton.hidden = true};
 
 // Move the ball across the field
+function ballMove(event){
+    const ball = document.querySelectorAll("#ball")[0];
+    const field = document.querySelectorAll("#field")[0];
+    let fieldCoords = this.getBoundingClientRect();
+
+    // Ball coordinates will be the mouse's coordinates
+    let ballX = event.clientX;
+    let ballY = event.clientY;
+
+    // Ball offsets from the field
+    const ballOffsetLeft = ball.clientWidth/2;
+    const ballOffsetTop = ball.clientHeight/2;
+
+    // Ball center coordinates will be the mouse's coordinates
+    ballX -= ballOffsetLeft;
+    ballY -= ballOffsetTop;
+    
+    const fieldOffsetLeft = fieldCoords.x;
+    const fieldOffsetTop = fieldCoords.y;
+    const fieldWidth = field.clientWidth;
+    const fieldHeight = field.clientHeight;
+
+    // If the ball is outside the field on the left
+    const leftMin = fieldOffsetLeft + field.clientLeft;
+    if (ballX < leftMin){
+        ballX = leftMin;
+    }
+
+    // If the ball is outside the field on the right
+    const leftMax = fieldOffsetLeft + field.clientLeft + fieldWidth - 2*ballOffsetLeft;
+    if (ballX > leftMax){
+        ballX = leftMax;
+    }
+
+    // If the ball is outside the field on the top
+    const topMin = fieldOffsetTop + field.clientTop;
+    if (ballY < topMin){
+        ballY = topMin;
+    }
+    
+    // If the ball is outside the field on the bottom
+    const topMax = fieldOffsetTop + field.clientTop + fieldHeight - 2*ballOffsetTop;
+    if (ballY > topMax){
+        ballY = topMax;
+    }
+    ball.style.left = `${ballX}px`;
+    ball.style.top = `${ballY}px`;
+}
+
+const field = document.querySelectorAll("#field")[0];
+field.addEventListener("click", ballMove);
 
 // Create a sliding menu
 function showList(){
