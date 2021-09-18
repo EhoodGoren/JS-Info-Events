@@ -77,6 +77,15 @@ function showList(){
 }
 const slideMenu = document.querySelectorAll("#menu")[0];
 slideMenu.addEventListener("click",showList);
-// Add a closing button
 
+// Add a closing button
+const animals = document.querySelectorAll(".pane");
+for (let animal of animals){
+    const closeButton = document.createElement("button");
+    closeButton.innerText = "[x]";
+    closeButton.onclick = () => {
+        animal.remove();
+    }
+    animal.appendChild(closeButton);
+}
 // Carousel
